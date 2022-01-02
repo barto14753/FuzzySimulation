@@ -58,3 +58,35 @@ END_RULEBLOCK
 
 END_FUNCTION_BLOCK
 
+
+    RULE 0: IF car_position IS very_left AND first_car_position IS far_left THEN move IS keep;
+    RULE 1: IF car_position IS very_left AND first_car_position IS close_left THEN move IS turn_right;
+    RULE 2: IF car_position IS very_left AND first_car_position IS very_close THEN move IS turn_very_right;
+    RULE 3: IF car_position IS very_left AND first_car_position IS close_right THEN move IS turn_very_right;
+    RULE 4: IF car_position IS very_left AND first_car_position IS far_right THEN move IS keep;
+
+    RULE 5: IF car_position IS left AND first_car_position IS far_left THEN move IS keep;
+    RULE 6: IF car_position IS left AND first_car_position IS close_left THEN move IS turn_right;
+    RULE 7: IF car_position IS left AND first_car_position IS very_close THEN move IS turn_very_right;
+    RULE 8: IF car_position IS left AND first_car_position IS close_right THEN move IS turn_very_right;
+    RULE 9: IF car_position IS left AND first_car_position IS far_right THEN move IS keep;
+
+    RULE 10: IF car_position IS middle AND first_car_position IS far_left THEN move IS keep;
+    RULE 11: IF car_position IS middle AND first_car_position IS close_left THEN move IS turn_right;
+    RULE 12: IF car_position IS middle AND first_car_position IS very_close THEN move IS turn_very_right;
+    RULE 13: IF car_position IS middle AND first_car_position IS close_right THEN move IS turn_very_right;
+    RULE 14: IF car_position IS middle AND first_car_position IS far_right THEN move IS keep;
+
+
+    RULE 15: IF car_position IS right AND first_car_position IS far_left THEN move IS keep;
+    RULE 16: IF car_position IS right AND first_car_position IS close_left THEN move IS turn_left;
+    RULE 17: IF car_position IS right AND first_car_position IS very_close THEN move IS turn_very_left;
+    RULE 18: IF car_position IS right AND first_car_position IS close_right THEN move IS turn_very_left;
+    RULE 19: IF car_position IS right AND first_car_position IS far_right THEN move IS keep;
+
+    RULE 20: IF car_position IS very_right AND first_car_position IS far_left THEN move IS keep;
+    RULE 21: IF car_position IS very_right AND first_car_position IS close_left THEN move IS turn_left;
+    RULE 22: IF car_position IS very_right AND first_car_position IS very_close THEN move IS turn_very_left;
+    RULE 23: IF car_position IS very_right AND first_car_position IS close_right THEN move IS turn_very_left;
+    RULE 24: IF car_position IS very_right AND first_car_position IS far_right THEN move IS keep;
+

@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Car {
-    public static final int width = 150;
-    public static final int height = 150;
+    public static final int width = 120;
+    public static final int height = 175;
 
     private final Image image;
     private final CarColor color;
@@ -21,6 +21,11 @@ public class Car {
         ImageIcon img = new ImageIcon(this.color.getImagePath());
         this.image = img.getImage();
 
+    }
+
+    public boolean isCollision(int x1, int y1)
+    {
+        return Math.abs(x1-this.x) < Car.width && Math.abs(y1-this.y) < Car.height;
     }
 
     public void draw(Graphics g)

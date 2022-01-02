@@ -3,6 +3,7 @@ package com.company;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 public class MovingCar extends Car implements KeyListener {
     private float velocity = 0;
@@ -22,29 +23,46 @@ public class MovingCar extends Car implements KeyListener {
         super.x = Math.min(x, Board.rightBorder);
     }
 
+    private void fuzzyLogicMove(int first_car_position)
+    {
+        super.x += FuzzyLogic.getMove(super.x, first_car_position - super.x, 0);
+    }
+
     @Override
     public void draw(Graphics g)
     {
-        if (velocity > velocityDowngrade) velocity -= velocityDowngrade;
-        else if (velocity < -velocityDowngrade) velocity += velocityDowngrade;
-        else velocity = 0;
-
-        super.x += velocity;
+        // super.x += velocity;
         this.handleBorders();
 
         super.draw(g);
 
     }
 
+    public void draw(Graphics g, int first_car_position)
+    {
+        this.fuzzyLogicMove(first_car_position);
+        this.handleBorders();
+        super.draw(g);
+    }
+
+    public boolean madeCollision(ArrayList<BotCar> botCars)
+    {
+        for (BotCar botCar: botCars)
+        {
+            if (this.isCollision(botCar.x, botCar.y)) return true;
+        }
+        return false;
+    }
+
     @Override
     public void keyTyped(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT)
         {
-            velocity = Math.max(-maxVelocity, velocity - velocityChange);
+            //super.x -= 10;
         }
         else if (e.getKeyCode() == KeyEvent.VK_RIGHT)
         {
-            velocity = Math.min(maxVelocity, velocity + velocityChange);
+            //super.x += 10;
         }
     }
 

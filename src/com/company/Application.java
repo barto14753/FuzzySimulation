@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Application extends JFrame implements ActionListener{
-    private final Timer timer = new Timer(10, this);
+    private final Timer timer = new Timer(5, this);
     private Board board;
 
 
@@ -21,6 +21,7 @@ public class Application extends JFrame implements ActionListener{
         board = new Board();
         add(board);
         addKeyListener(board.movingCar);
+        addKeyListener(board);
         setSize(1200, 800);
 
         setTitle("Car Simulation");

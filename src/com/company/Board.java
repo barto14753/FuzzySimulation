@@ -5,11 +5,13 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.*;
 
-public class Board extends JPanel implements ActionListener {
+public class Board extends JPanel implements ActionListener, KeyListener {
     private final Timer timer = new Timer(1000, this);
     private final static Random random = new Random();
 
@@ -19,6 +21,7 @@ public class Board extends JPanel implements ActionListener {
     private int boardPosition = 0;
     public final static int boardSpeed = 3;
     public MovingCar movingCar = null;
+    private boolean isRunning = true;
 
     private ArrayList<BotCar> botCars = new ArrayList<>();
 
@@ -49,9 +52,10 @@ public class Board extends JPanel implements ActionListener {
         boardPosition = (boardPosition + boardSpeed) % getHeight();
     }
 
-    public void addBot()
+    public void addBots()
     {
-        botCars.add(new BotCar());
+        botCars.add(new BotCar(this.botCars));
+
     }
 
     private void removeBots()
@@ -59,24 +63,71 @@ public class Board extends JPanel implements ActionListener {
         botCars.removeIf(botCar -> botCar.toDelete(getHeight()));
     }
 
+    private void handleCollision()
+    {
+        if (movingCar.madeCollision(botCars))
+        {
+            this.isRunning = false;
+
+        }
+    }
+
+
     @Override
     public void paintComponent(Graphics g) {
+        if (isRunning)
+        {
+            removeBots();
+            this.update();
+            handleCollision();
+        }
 
-        this.update();
         g.drawImage(road, 0, boardPosition - getHeight(), null);
         g.drawImage(road, 0, boardPosition, null);
 
-        for (BotCar botCar: botCars) botCar.draw(g);
-        movingCar.draw(g);
+        for (BotCar botCar: botCars)
+        {
+            if (isRunning) botCar.move();
+            botCar.draw(g);
+        }
+        if (botCars.isEmpty() || !isRunning) movingCar.draw(g);
+        else movingCar.draw(g, botCars.get(0).x);
+
 
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        addBot();
-        removeBots();
+        if (isRunning)
+        {
+            addBots();
 
-        timer.setDelay(random.nextInt(750) + 500);
+            timer.setDelay(random.nextInt(500) + 250);
+        }
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+        if (!isRunning)
+        {
+
+            this.isRunning = true;
+            botCars = new ArrayList<>();
+            movingCar = new MovingCar(CarColor.green, 500, 575);
+            timer.setDelay(random.nextInt(500) + 250);
+        }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }

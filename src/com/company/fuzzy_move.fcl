@@ -1,0 +1,74 @@
+FUNCTION_BLOCK MOVE
+
+VAR_INPUT
+car_position : REAL;
+first_car_position : REAL;
+second_car_position : REAL;
+END_VAR
+
+VAR_OUTPUT
+move : REAL;
+END_VAR
+
+FUZZIFY car_position
+TERM very_left := (155, 1) (280, 1) (280, 0);
+TERM left := (280, 0) (280, 1) (320, 1) (430, 1) (430, 0);
+TERM middle := (430,0) (430, 1) (470, 1) (580, 1) (580, 0);
+TERM right := (580,0) (580, 1) (620, 1) (730, 1) (730, 0);
+TERM very_right := (730,0) (730, 1) (770, 1) (895, 1);
+END_FUZZIFY
+
+FUZZIFY first_car_position
+TERM far_left := (-740, 1) (-550, 1) (-450, 0);
+TERM close_left := (-550, 0) (-450, 1) (-250, 1) (-175, 0);
+TERM very_close_left := (-250, 0) (-175, 1) (0, 1) (0, 0);
+TERM very_close_right := (0, 0) (0, 1) (175, 1) (175, 0);
+TERM close_right := (175, 0) (250, 1) (450, 1) (550, 0);
+TERM far_right := (450, 0) (550, 1) (740, 1);
+END_FUZZIFY
+
+FUZZIFY second_car_position
+TERM far_left := (-740, 1) (-550, 1) (-450, 0);
+TERM close_left := (-550, 0) (-450, 1) (-250, 1) (-175, 0);
+TERM very_close := (-250, 0) (-175, 1) (175, 1) (250, 0);
+TERM close_right := (175, 0) (250, 1) (450, 1) (550, 0);
+TERM far_right := (450, 0) (550, 1) (740, 1);
+END_FUZZIFY
+
+DEFUZZIFY move
+TERM turn_very_left := (0, 1) (2, 1) (3, 0);
+TERM turn_left := (2,0) (3,1) (4,1) (5,0);
+TERM keep := (4,0) (5,1) (6,1) (7,0);
+TERM turn_right := (6,0) (7,1) (8,1) (9,0);
+TERM turn_very_right := (8,0) (9,1) (10,1);
+METHOD : COG;
+DEFAULT := 0;
+END_DEFUZZIFY
+
+RULEBLOCK first
+    AND: MIN;
+    ACT: MIN;
+
+    RULE 0: IF first_car_position IS very_close_left THEN move is turn_very_right;
+    RULE 1: IF first_car_position IS very_close_right THEN move is turn_very_left;
+    RULE 2: IF car_position IS very_left AND first_car_position IS very_close_right THEN move is turn_very_right;
+    RULE 3: IF car_position IS very_left AND first_car_position IS very_close_left THEN move is turn_very_right;
+    RULE 4: IF car_position IS very_right AND first_car_position IS very_close_right THEN move is turn_very_left;
+    RULE 5: IF car_position IS very_right AND first_car_position IS very_close_left THEN move is turn_very_left;
+
+
+
+END_RULEBLOCK
+
+
+END_FUNCTION_BLOCK
+
+    RULE 1: IF first_car_position IS very_close AND car_position IS left THEN move IS turn_very_right;
+    RULE 2: IF first_car_position IS very_close AND car_position IS middle THEN move IS turn_very_right;
+    RULE 3: IF first_car_position IS very_close AND car_position IS right THEN move IS turn_very_left;
+    RULE 4: IF first_car_position IS very_close AND car_position IS very_right THEN move IS turn_very_left;
+    RULE 5: IF first_car_position IS close_left THEN move IS turn_right;
+    RULE 6: IF first_car_position IS far_left THEN move is turn_left;
+    RULE 7: IF first_car_position IS close_right THEN move is turn_left;
+    RULE 8: IF first_car_position IS far_right THEN move is turn_right;
+    RULE 9: IF first_car_position IS very_close THEN move is turn_very_right;

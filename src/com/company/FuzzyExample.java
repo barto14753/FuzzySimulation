@@ -1,6 +1,7 @@
 package com.company;
 
 import net.sourceforge.jFuzzyLogic.FIS;
+import net.sourceforge.jFuzzyLogic.plot.JFuzzyChart;
 import net.sourceforge.jFuzzyLogic.rule.Variable;
 
 import java.util.Arrays;
@@ -13,24 +14,26 @@ public class FuzzyExample {
             // int poziomNatezenia = Integer.parseInt(args[1]);
             // int poraDnia = Integer.parseInt(args[2]);
 
-            String fileName = "/Users/bartoszwlodarski/FuzzySimulation/src/com/company/fuzzy_volume.fcl";
-            int poziomNatezenia = 10;
-            int poraDnia = 13;
+            String fileName = "/Users/bartoszwlodarski/FuzzySimulation/src/com/company/fuzzy_move.fcl";
+            int car_position = 300;
+            int first_car_position = 0;
+            int second_car_position = 0;
 
             FIS fis = FIS.load(fileName, false);
 
             // zadaj wartosci wejsciowe
-            fis.setVariable("poziom_natezenia", poziomNatezenia);
-            fis.setVariable("pora_dnia", poraDnia);
-            //JFuzzyChart.get().chart(fis);
+            fis.setVariable("car_position", car_position);
+            fis.setVariable("first_car_position", first_car_position);
+            fis.setVariable("second_car_position", second_car_position);
+            JFuzzyChart.get().chart(fis);
             // logika sterownika
             fis.evaluate();
 
             // graficzna prezentacja wyjscia
-            Variable v = fis.getVariable("zmiana_natezenia");
+            Variable v = fis.getVariable("move");
             System.out.println(v.toString());
-            System.out.println(v.getMembershipFunction("zostaw").membership(v.getValue()));
-            //JFuzzyChart.get().chart(v, v.getDefuzzifier(), true);
+            System.out.println(v.getMembershipFunction("keep").membership(v.getValue()));
+            JFuzzyChart.get().chart(v, v.getDefuzzifier(), true);
 
 
 
