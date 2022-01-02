@@ -25,7 +25,7 @@ public class Car {
 
     public boolean isCollision(int x1, int y1)
     {
-        return Math.abs(x1-this.x) < Car.width && Math.abs(y1-this.y) < Car.height;
+        return Math.abs(x1-this.x) < Car.width*0.9 && Math.abs(y1-this.y) < Car.height*0.95;
     }
 
     public void draw(Graphics g)

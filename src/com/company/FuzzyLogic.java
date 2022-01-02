@@ -27,9 +27,9 @@ public class FuzzyLogic {
         double turn_right = v.getMembershipFunction("turn_right").membership(v.getValue());
         double turn_very_right = v.getMembershipFunction("turn_very_right").membership(v.getValue());
         if (turn_very_left > 0.0) return -10;
-        else if (turn_left > 0.0) return -5;
+        else if (turn_left > 0.0) return -2;
         else if (turn_very_right > 0.0) return 10;
-        else if (turn_right > 0.0) return 5;
+        else if (turn_right > 0.0) return 2;
         else return 0;
 
     }
