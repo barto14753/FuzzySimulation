@@ -91,7 +91,8 @@ public class Board extends JPanel implements ActionListener, KeyListener {
             botCar.draw(g);
         }
         if (botCars.isEmpty() || !isRunning) movingCar.draw(g);
-        else movingCar.draw(g, botCars.get(0).x);
+        else if (botCars.size() < 2) movingCar.draw(g, botCars.get(0).x, botCars.get(0).x);
+        else movingCar.draw(g, botCars.get(1).x, botCars.get(0).x);
 
 
 
@@ -103,7 +104,7 @@ public class Board extends JPanel implements ActionListener, KeyListener {
         {
             addBots();
 
-            timer.setDelay(random.nextInt(500) + 250);
+            timer.setDelay(random.nextInt(500) + 1500);
         }
 
     }

@@ -6,12 +6,6 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class MovingCar extends Car implements KeyListener {
-    private float velocity = 0;
-
-    private final float maxVelocity = 10;
-    private final float velocityChange = 1.5F;
-    private final float velocityDowngrade = 0.2F;
-
 
     public MovingCar(CarColor color, int x, int y) {
         super(color, x, y);
@@ -23,7 +17,7 @@ public class MovingCar extends Car implements KeyListener {
         super.x = Math.min(x, Board.rightBorder);
     }
 
-    private void fuzzyLogicMove(int first_car_position)
+    private void fuzzyLogicMove(int firstCarPosition, int first_car_position)
     {
         super.x += FuzzyLogic.getMove(super.x, first_car_position - super.x, 0);
     }
@@ -31,16 +25,14 @@ public class MovingCar extends Car implements KeyListener {
     @Override
     public void draw(Graphics g)
     {
-        // super.x += velocity;
         this.handleBorders();
-
         super.draw(g);
 
     }
 
-    public void draw(Graphics g, int first_car_position)
+    public void draw(Graphics g, int first_car_position, int second_car_position)
     {
-        this.fuzzyLogicMove(first_car_position);
+        this.fuzzyLogicMove(first_car_position, second_car_position);
         this.handleBorders();
         super.draw(g);
     }
