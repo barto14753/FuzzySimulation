@@ -104,7 +104,7 @@ public class Board extends JPanel implements ActionListener, KeyListener {
         {
             addBots();
 
-            timer.setDelay(random.nextInt(500) + 800);
+            timer.setDelay(random.nextInt(500) + 1000);
         }
 
     }

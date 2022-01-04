@@ -48,38 +48,30 @@ RULEBLOCK first
     RULE 1: IF (car_position IS very_left) AND (first_car_position IS far_left) AND (second_car_position IS close_left) THEN move IS turn_very_right;
     RULE 3: IF (car_position IS very_left) AND (first_car_position IS far_left) AND (second_car_position IS close_right) THEN move IS turn_very_right;
     RULE 4: IF (car_position IS very_left) AND (first_car_position IS far_left) AND (second_car_position IS far_right) THEN move IS turn_right;
-
     RULE 5: IF (car_position IS very_left) AND (first_car_position IS close_left) THEN move IS turn_very_right;
     RULE 6: IF (car_position IS very_left) AND (first_car_position IS close_right) THEN move IS turn_very_left;
-
     RULE 7: IF (car_position IS very_left) AND (first_car_position IS far_right) AND (second_car_position IS far_left) THEN move IS turn_right;
     RULE 8: IF (car_position IS very_left) AND (first_car_position IS far_right) AND (second_car_position IS close_left) THEN move IS turn_very_right;
     RULE 9: IF (car_position IS very_left) AND (first_car_position IS far_right) AND (second_car_position IS close_right) THEN move IS turn_very_right;
     RULE 10: IF (car_position IS very_left) AND (first_car_position IS far_right) AND (second_car_position IS far_right) THEN move IS turn_right;
 
-
     RULE 11: IF (car_position IS middle) AND (first_car_position IS far_left) AND (second_car_position IS far_left) THEN move IS keep;
     RULE 12: IF (car_position IS middle) AND (first_car_position IS far_left) AND (second_car_position IS close_left) THEN move IS turn_very_right;
     RULE 13: IF (car_position IS middle) AND (first_car_position IS far_left) AND (second_car_position IS close_right) THEN move IS turn_very_left;
     RULE 14: IF (car_position IS middle) AND (first_car_position IS far_left) AND (second_car_position IS far_right) THEN move IS keep;
-
     RULE 15: IF (car_position IS middle) AND (first_car_position IS close_left) THEN move IS turn_very_right;
     RULE 16: IF (car_position IS middle) AND (first_car_position IS close_right) THEN move IS turn_very_left;
-
     RULE 17: IF (car_position IS middle) AND (first_car_position IS far_right) AND (second_car_position IS far_left) THEN move IS keep;
     RULE 18: IF (car_position IS middle) AND (first_car_position IS far_right) AND (second_car_position IS close_left) THEN move IS turn_very_right;
     RULE 19: IF (car_position IS middle) AND (first_car_position IS far_right) AND (second_car_position IS close_right) THEN move IS turn_very_left;
     RULE 20: IF (car_position IS middle) AND (first_car_position IS far_right) AND (second_car_position IS far_right) THEN move IS keep;
 
-
     RULE 21: IF (car_position IS very_right) AND (first_car_position IS far_left) AND (second_car_position IS far_left) THEN move IS turn_left;
     RULE 22: IF (car_position IS very_right) AND (first_car_position IS far_left) AND (second_car_position IS close_left) THEN move IS turn_very_left;
     RULE 23: IF (car_position IS very_right) AND (first_car_position IS far_left) AND (second_car_position IS close_right) THEN move IS turn_very_left;
     RULE 24: IF (car_position IS very_right) AND (first_car_position IS far_left) AND (second_car_position IS far_right) THEN move IS turn_left;
-
     RULE 25: IF (car_position IS very_right) AND (first_car_position IS close_left) THEN move IS turn_very_right;
     RULE 26: IF (car_position IS very_right) AND (first_car_position IS close_right) THEN move IS turn_very_left;
-
     RULE 27: IF (car_position IS very_right) AND (first_car_position IS far_right) AND (second_car_position IS far_left) THEN move IS turn_left;
     RULE 28: IF (car_position IS very_right) AND (first_car_position IS far_right) AND (second_car_position IS close_left) THEN move IS turn_very_left;
     RULE 29: IF (car_position IS very_right) AND (first_car_position IS far_right) AND (second_car_position IS close_right) THEN move IS turn_very_left;
@@ -91,85 +83,3 @@ END_RULEBLOCK
 
 
 END_FUNCTION_BLOCK
-
-    RULE 0: IF first_car_position IS very_close_left THEN move is turn_very_right;
-    RULE 1: IF first_car_position IS very_close_right THEN move is turn_very_left;
-    RULE 2: IF car_position IS very_left AND first_car_position IS very_close_right THEN move is turn_very_right;
-    RULE 3: IF car_position IS very_left AND first_car_position IS very_close_left THEN move is turn_very_right;
-    RULE 4: IF car_position IS very_right AND first_car_position IS very_close_right THEN move is turn_very_left;
-    RULE 5: IF car_position IS very_right AND first_car_position IS very_close_left THEN move is turn_very_left;
-
-
-
-
-
-
-
-
-
-
-
-    RULE 0: IF (car_position IS very_left) AND (first_car_position IS far_left) AND (second_car_position IS far_left) THEN move IS turn_right;
-    RULE 1: IF (car_position IS very_left) AND (first_car_position IS far_left) AND (second_car_position IS close_left) THEN move IS turn_right;
-    RULE 2: IF (car_position IS very_left) AND (first_car_position IS far_left) AND (second_car_position IS very_close) THEN move IS turn_very_right;
-    RULE 3: IF (car_position IS very_left) AND (first_car_position IS far_left) AND (second_car_position IS close_right) THEN move IS keep;
-    RULE 4: IF (car_position IS very_left) AND (first_car_position IS far_left) AND (second_car_position IS far_right) THEN move IS turn_right;
-
-    RULE 5: IF (car_position IS very_left) AND (first_car_position IS close_left) AND (second_car_position IS far_left) THEN move IS turn_right;
-    RULE 6: IF (car_position IS very_left) AND (first_car_position IS close_left) AND (second_car_position IS close_left) THEN move IS turn_right;
-    RULE 7: IF (car_position IS very_left) AND (first_car_position IS close_left) AND (second_car_position IS very_close) THEN move IS turn_very_right;
-    RULE 8: IF (car_position IS very_left) AND (first_car_position IS close_left) AND (second_car_position IS close_right) THEN move IS keep;
-    RULE 9: IF (car_position IS very_left) AND (first_car_position IS close_left) AND (second_car_position IS far_right) THEN move IS turn_right;
-
-    RULE 10: IF (car_position IS very_left) AND (first_car_position IS very_close) AND (second_car_position IS far_left) THEN move IS turn_very_right;
-    RULE 11: IF (car_position IS very_left) AND (first_car_position IS very_close) AND (second_car_position IS close_left) THEN move IS turn_very_right;
-    RULE 12: IF (car_position IS very_left) AND (first_car_position IS very_close) AND (second_car_position IS very_close) THEN move IS turn_very_right;
-    RULE 13: IF (car_position IS very_left) AND (first_car_position IS very_close) AND (second_car_position IS close_right) THEN move IS turn_very_right;
-    RULE 14: IF (car_position IS very_left) AND (first_car_position IS very_close) AND (second_car_position IS far_right) THEN move IS turn_very_right;
-
-    RULE 15: IF (car_position IS very_left) AND (first_car_position IS close_right) AND (second_car_position IS far_left) THEN move IS keep;
-    RULE 16: IF (car_position IS very_left) AND (first_car_position IS close_right) AND (second_car_position IS close_left) THEN move IS keep;
-    RULE 17: IF (car_position IS very_left) AND (first_car_position IS close_right) AND (second_car_position IS very_close) THEN move IS turn_very_right;
-    RULE 18: IF (car_position IS very_left) AND (first_car_position IS close_right) AND (second_car_position IS close_right) THEN move IS keep;
-    RULE 19: IF (car_position IS very_left) AND (first_car_position IS close_right) AND (second_car_position IS far_right) THEN move IS keep;
-
-    RULE 20: IF (car_position IS very_left) AND (first_car_position IS far_right) AND (second_car_position IS far_left) THEN move IS turn_right;
-    RULE 21: IF (car_position IS very_left) AND (first_car_position IS far_right) AND (second_car_position IS close_left) THEN move IS turn_right;
-    RULE 22: IF (car_position IS very_left) AND (first_car_position IS far_right) AND (second_car_position IS very_close) THEN move IS turn_very_right;
-    RULE 23: IF (car_position IS very_left) AND (first_car_position IS far_right) AND (second_car_position IS close_right) THEN move IS keep;
-    RULE 24: IF (car_position IS very_left) AND (first_car_position IS far_right) AND (second_car_position IS far_right) THEN move IS turn_right;
-
-
-
-
-
-
-    RULE 25: IF (car_position IS middle) AND (first_car_position IS far_left) AND (second_car_position IS far_left) THEN move IS keep;
-    RULE 26: IF (car_position IS middle) AND (first_car_position IS far_left) AND (second_car_position IS close_left) THEN move IS turn_right;
-    RULE 27: IF (car_position IS middle) AND (first_car_position IS far_left) AND (second_car_position IS very_close) THEN move IS turn_very_right;
-    RULE 28: IF (car_position IS middle) AND (first_car_position IS far_left) AND (second_car_position IS close_right) THEN move IS turn_left;
-    RULE 29: IF (car_position IS middle) AND (first_car_position IS far_left) AND (second_car_position IS far_right) THEN move IS keep;
-
-    RULE 30: IF (car_position IS middle) AND (first_car_position IS close_left) AND (second_car_position IS far_left) THEN move IS turn_right;
-    RULE 31: IF (car_position IS middle) AND (first_car_position IS close_left) AND (second_car_position IS close_left) THEN move IS turn_right;
-    RULE 32: IF (car_position IS middle) AND (first_car_position IS close_left) AND (second_car_position IS very_close) THEN move IS turn_very_right;
-    RULE 33: IF (car_position IS middle) AND (first_car_position IS close_left) AND (second_car_position IS close_right) THEN move IS keep;
-    RULE 34: IF (car_position IS middle) AND (first_car_position IS close_left) AND (second_car_position IS far_right) THEN move IS turn_right;
-
-    RULE 35: IF (car_position IS middle) AND (first_car_position IS very_close) AND (second_car_position IS far_left) THEN move IS turn_very_right;
-    RULE 36: IF (car_position IS middle) AND (first_car_position IS very_close) AND (second_car_position IS close_left) THEN move IS turn_very_right;
-    RULE 37: IF (car_position IS middle) AND (first_car_position IS very_close) AND (second_car_position IS very_close) THEN move IS ;
-    RULE 38: IF (car_position IS middle) AND (first_car_position IS very_close) AND (second_car_position IS close_right) THEN move IS turn_very_right;
-    RULE 39: IF (car_position IS middle) AND (first_car_position IS very_close) AND (second_car_position IS far_right) THEN move IS turn_very_right;
-
-    RULE 40: IF (car_position IS middle) AND (first_car_position IS close_right) AND (second_car_position IS far_left) THEN move IS keep;
-    RULE 41: IF (car_position IS middle) AND (first_car_position IS close_right) AND (second_car_position IS close_left) THEN move IS keep;
-    RULE 42: IF (car_position IS middle) AND (first_car_position IS close_right) AND (second_car_position IS very_close) THEN move IS turn_very_right;
-    RULE 43: IF (car_position IS middle) AND (first_car_position IS close_right) AND (second_car_position IS close_right) THEN move IS keep;
-    RULE 44: IF (car_position IS middle) AND (first_car_position IS close_right) AND (second_car_position IS far_right) THEN move IS keep;
-
-    RULE 45: IF (car_position IS middle) AND (first_car_position IS far_right) AND (second_car_position IS far_left) THEN move IS turn_right;
-    RULE 46: IF (car_position IS middle) AND (first_car_position IS far_right) AND (second_car_position IS close_left) THEN move IS turn_right;
-    RULE 47: IF (car_position IS middle) AND (first_car_position IS far_right) AND (second_car_position IS very_close) THEN move IS turn_very_right;
-    RULE 48: IF (car_position IS middle) AND (first_car_position IS far_right) AND (second_car_position IS close_right) THEN move IS keep;
-    RULE 49: IF (car_position IS middle) AND (first_car_position IS far_right) AND (second_car_position IS far_right) THEN move IS turn_right;
