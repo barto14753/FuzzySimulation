@@ -2,7 +2,7 @@
 Car simulation using fuzzy logic
 
 ## Mechanism
-Based on position of out car and other cars which we can collide, fuzzy logic classifier make proper moves to avoid these collisions.
+Based on position of out car and other cars which we can collide, fuzzy logic classifier make proper moves to avoid such collisions.
 
 ## Stack
 * Java
